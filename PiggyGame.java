@@ -48,12 +48,16 @@ public class PiggyGame extends JPanel implements KeyListener {
 
 
     private boolean canMove(int x, int y) {
+    if (x < 0 || x >= COLS || y < 0 || y >= ROWS) return false;
+    return map[y][x] != 1; // Wall check
+}
 
-        return map[y][x] != 1; // Wall check
-
-    }
     @Override
     protected void paintComponent(Graphics g) {
+        g.setColor(Color.CYAN);
+        g.fillRect(0, 0, getWidth(), getHeight());
+        g.setColor(Color.GREEN);  
+        g.fillOval(playerX, playerY, 30, 30);
         super.paintComponent(g);
         // Draw Maze Walls
 
@@ -72,11 +76,9 @@ public class PiggyGame extends JPanel implements KeyListener {
             }
 
         }
-        g.setColor(Color.CYAN);
-        g.fillRect(0, 0, getWidth(), getHeight());
         g.setColor(Color.GREEN);  
-        g.fillOval(playerX, playerY, 30, 30);
- } 
+         g.fillOval(playerX * TILE_SIZE, playerY * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {
