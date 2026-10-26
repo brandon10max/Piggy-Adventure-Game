@@ -54,11 +54,9 @@ public class PiggyGame extends JPanel implements KeyListener {
 
     @Override
     protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
         g.setColor(Color.CYAN);
         g.fillRect(0, 0, getWidth(), getHeight());
-        g.setColor(Color.GREEN);  
-        g.fillOval(playerX, playerY, 30, 30);
-        super.paintComponent(g);
         // Draw Maze Walls
 
         for (int r = 0; r < ROWS; r++) {
